@@ -1,0 +1,1 @@
+{"name":"Local: doubly_linked_list","url":"e:\\c++ programming\\doubly_linked_list.cpp","tests":[{"id":1719729745509,"input":"1 2 3 4 5 6 -1","output":"1 2 3 4 5 6\n6 5 4 3 2 1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++ programming\\doubly_linked_list.cpp","group":"local","local":true}
