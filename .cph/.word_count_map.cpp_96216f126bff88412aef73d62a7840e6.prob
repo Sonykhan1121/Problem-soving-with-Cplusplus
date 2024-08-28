@@ -1,0 +1,1 @@
+{"name":"Local: word_count_map","url":"e:\\c++ programming\\word_count_map.cpp","tests":[{"id":1724826395958,"input":"I am a man and you are a boy","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++ programming\\word_count_map.cpp","group":"local","local":true}
