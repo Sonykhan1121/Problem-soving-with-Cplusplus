@@ -1,0 +1,1 @@
+{"name":"Local: delete_from_heap","url":"e:\\c++ programming\\delete_from_heap.cpp","tests":[{"id":1724653895415,"input":"7\n30 20 25 15 5 6 3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++ programming\\delete_from_heap.cpp","group":"local","local":true}
