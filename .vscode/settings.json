@@ -5,7 +5,8 @@
         "string": "cpp",
         "bitset": "cpp",
         "chrono": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "iosfwd": "cpp"
     },
     "cSpell.words": [
         "ndenumerate"
