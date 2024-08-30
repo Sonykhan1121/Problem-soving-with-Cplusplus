@@ -7,31 +7,27 @@
     cin>>tc;
     while(tc--)
     {
-        int n;
-        cin>>n;
-        vector<int> v(n);
-        for(int i=0;i<n;i++)
+        set<int> st;
+    vector<int> a;
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        int x;
+        cin>>x;
+        st.insert(x);
+        a.push_back(x);
+    }
+    sort(a.begin(),a.end());
+    for(int i =0;i<n;i++)
+    {
+        if(st.count(a[i]))
         {
-            cin>>v[i];
+            cout<<a[i]<<" ";
+            st.erase(a[i]);
         }
-        bool sorted = true;
-        for(int i=0;i<n-1;i++)
-        {
-            if(v[i]>v[i+1])
-            {
-                sorted = false;
-                break;
-            }
-
-        }
-        if(sorted)
-        {
-            cout<<"YES"<<endl;
-        }
-        else
-        cout<<"NO"<<endl;
-
-
+    }
+        cout<<endl;
     }
     
     return 0;
