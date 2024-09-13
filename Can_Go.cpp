@@ -1,68 +1,66 @@
- #include<bits/stdc++.h>
- using namespace std;
-char ar[1005][1005];
-bool visited[1005][1005];
-vector<pair<int,int>> d = {{1,0},{-1,0},{0,1},{0,-1}};
-bool isValid(int i,int j,int n,int m)
-{
-    return i>=0&&j>=0&&i<n&&j<m;
-}
-bool DFS(int i,int j, int endi,int endj,int n,int m)
-{
-    if(i==endi&&j==endj)
-    {
-        return true;
+#include <bits/stdc++.h>
+using namespace std;
+
+const int N = 1005;
+long long int dis[N];
+vector<pair<int, long long int>> ar[N];
+
+class cmp {
+public:
+    bool operator()(pair<int, long long int> a, pair<int, long long int> b) {
+        return a.second > b.second;
     }
-    visited[i][j] = true;
-    for(auto add:d)
-    {
-        int nexti = i+add.first;
-        int nextj = j+add.second;
-        if(isValid(nexti,nextj,n,m)&&!visited[nexti][nextj]&&ar[nexti][nextj]!='#')
-        {
-            if(DFS(nexti,nextj,endi,endj,n,m))
-            {
-                return true;
+};
+
+void dijkstra(int src) {
+    priority_queue<pair<int, long long int>, vector<pair<int, long long int>>, cmp> q;
+    q.push({src, 0});
+    dis[src] = 0;
+    while (!q.empty()) {
+        pair<int, long long int> parent = q.top();
+        q.pop();
+        if (parent.second > dis[parent.first]) continue;
+        for (auto child : ar[parent.first]) {
+            int childnode = child.first;
+            long long int childcost = child.second;
+            if (parent.second + childcost < dis[childnode]) {
+                dis[childnode] = parent.second + childcost;
+                q.push({childnode, dis[childnode]});
             }
         }
     }
-    return false;
-
 }
- int main()
- {
 
-    int n,m;
-    cin>>n>>m;
-    int starti,startj,endi,endj;
-    for(int i =0;i<n;i++)
-    {
-        for(int j =0;j<m;j++)
-        {
-            cin>>ar[i][j];
-            if(ar[i][j]=='A')
-            {
-                starti = i;
-                startj = j;
+int main() {
+    int n, e;
+    std::cin >> n >> e;
+    while (e--) {
+        int a, b;
+        long long int w;
+        std::cin >> a >> b >> w;
+        ar[a].push_back({b, w});
+    }
+    int src;
+    cin >> src;
 
-            }
-            if(ar[i][j]=='B')
-            {
-                endi = i;
-                endj = j;
-            }
+    for (int i = 1; i <= n; i++) {
+        dis[i] = 1e18+5;
+    }
+
+    dijkstra(src);
+
+    int q;
+    cin >> q;
+    while (q--) {
+        int v;
+        long long int w;
+        cin >> v >> w;
+        if (dis[v] <= w) {
+            cout << "YES\n";
+        } else {
+            cout << "NO\n";
         }
     }
-    memset(visited,false,sizeof(visited));
-   bool have = DFS(starti,startj,endi,endj,n,m);
-   if(have)
-   {
-    cout<<"YES"<<endl;
-   }
-   else
-   {
-    cout<<"NO"<<endl;
-   }
-    
+
     return 0;
- }
+}
