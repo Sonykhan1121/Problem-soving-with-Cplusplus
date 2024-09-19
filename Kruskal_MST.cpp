@@ -21,12 +21,7 @@
     par[x] = find(par[x]);
     return par[x];
  }
- void Union(int u,int v)
- {
-    int leadA = find(u);
-    int leadB = find(v);
-    par[leadA] = leadB;
- }
+
  void Union_by_size(int u,int v)
  {
     int leadA = find(u);
@@ -44,54 +39,48 @@
     }
 
  }
- void Union_by_Level(int u,int v)
+ class Edge
  {
-    int leadA = find(u);
-    int leadB = find(v);
-    if(level[leadA]>level[leadB])
-    {
-        par[leadB] = leadA;
-        
-
-    }
-    else if(level[leadB]>level[leadA])
-    {
-        par[leadA] = leadB;
-        
-    }
-    else
-    {
-        par[leadA] = leadB;
-        level[leadB]++;
-        
-    }
-
+    public:
+        int u,v,c;
+        Edge(int u,int v,int c)
+        {
+             this->u = u;
+             this->v = v;
+             this->c = c;
+        }
+ };
+ bool cmp(Edge e1,Edge e2)
+ {
+    return e1.c<e2.c;
  }
  int main()
  {
 
-    
-    int n,e;
+    int n ,e;
     cin>>n>>e;
-    vector<pair<int,int>> edges;
     dsu_initialize(n);
+    vector<Edge> edgelist;
     while(e--)
     {
-        int u ,v;
-        cin>>u>>v;
-        Union_by_size(u,v);
-        edges.push_back({u,v});
+        int u,v,c;
+        cin>>u>>v>>c;
+        edgelist.push_back(Edge(u,v,c));
+        
     }
-    for(auto i:edges)
+    sort(edgelist.begin(),edgelist.end(),cmp);
+    int totalcost = 0;
+    for(auto i:edgelist)
     {
-        int first = find(i.first);
-        int second = find(i.second);
-        if(first!=second)
+        // cout<<i.u<<" "<<i.v<<" "<<i.c<<endl;
+        int left = find(i.u);
+        int right = find(i.v);
+        if(left!=right)
         {
-            cout<<"Cycle"<<endl;
-            return 0;
+            Union_by_size(i.u,i.v);
+            totalcost+=i.c;
         }
     }
-    
+    cout<<"Total cost : "<<totalcost<<endl;
     return 0;
  }

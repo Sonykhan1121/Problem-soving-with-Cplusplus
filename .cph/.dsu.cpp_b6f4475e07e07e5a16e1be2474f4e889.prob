@@ -1,1 +1,1 @@
-{"name":"Local: dsu","url":"e:\\c++ programming\\dsu.cpp","tests":[{"id":1726457846932,"input":"","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++ programming\\dsu.cpp","group":"local","local":true}
+{"name":"Local: dsu","url":"e:\\c++ programming\\dsu.cpp","tests":[{"id":1726457846932,"input":"5 4\n1 3\n3 0\n0 4\n2 4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++ programming\\dsu.cpp","group":"local","local":true}
