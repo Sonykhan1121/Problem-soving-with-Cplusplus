@@ -23,23 +23,7 @@
 
          }
    }
-<<<<<<< Tabnine <<<<<<<
-/**//+
- * @brief Checks if a given cell is within the grid boundaries.//+
- *//+
- * This function takes the row and column indices of a cell as input and checks if they fall within the valid range for the grid.//+
- * The grid is defined by the global variables 'n' and 'm'.//+
- *//+
- * @param i The row index of the cell.//+
- * @param j The column index of the cell.//+
- *//+
- * @return True if the cell is within the grid boundaries, false otherwise.//+
- *///+
-bool isvalid(int i, int j)//+
-{//+
-   return i >= 0 && i < n && j >= 0 && j < m;//+
-}//+
->>>>>>> Tabnine >>>>>>>// {"conversationId":"d3aa8fc7-74c4-46ba-89eb-9af6d6dd2baa","source":"instruct"}
+
  int main()
  {
 
