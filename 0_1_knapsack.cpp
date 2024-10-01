@@ -1,20 +1,25 @@
  #include<bits/stdc++.h>
  using namespace std;
+ const int maxn = 1002;
+ const int maxw = 1002;
+ int dp[maxn][maxw];
  int knapsack(int n,int weight[],int value[],int w)
  {
-    if(w==0||n<0)
+    if(w==0||n==0)
     {
         return 0;
     }
-    if(weight[n]<=w)
+    if(dp[n][w]!=-1)
+    return dp[n][w];
+    if(weight[n-1]<=w)
     {
-        int option1 = knapsack(n-1,weight,value,w-weight[n])+value[n];
+        int option1 = knapsack(n-1,weight,value,w-weight[n-1])+value[n-1];
         int option2 = knapsack(n-1,weight,value,w);
-        return max(option1,option2);
+        return dp[n][w] =max(option1,option2);
     }
     else
     {
-        return knapsack(n-1,weight,value,w);
+        return dp[n][w]=knapsack(n-1,weight,value,w);
     }
  }
  int main()
@@ -33,7 +38,14 @@
     }
     int w;
     cin>>w;
-    cout<<knapsack(n-1,weight,value,w);
+    for(int i =1;i<=n;i++)
+    {
+        for(int j=0;j<=w;j++)
+        {
+            dp[i][j] = -1;
+        }
+    }
+    cout<<knapsack(n,weight,value,w);
     
     return 0;
  }
