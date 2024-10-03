@@ -3,11 +3,13 @@
  const int maxn = 1002;
  const int maxw = 1002;
  int dp[maxn][maxw];
- int knapsack(int n,int weight[],int value[],int w)
+ int knapsack(int n,int weight[],int value[],int  w)
  {
     if(w==0||n==0)
     {
-        return 0;
+        dp[n][w] = 0;
+
+        return dp[n][w];
     }
     if(dp[n][w]!=-1)
     return dp[n][w];
@@ -27,17 +29,15 @@
 
     int n;
     cin>>n;
+    int w;
+    cin>>w;
     int weight[n],value[n];
     for(int i =0;i<n;i++)
     {
-        cin>>weight[i];
+        cin>>weight[i]>>value[i];
     }
-    for(int i =0;i<n;i++)
-    {
-        cin>>value[i];
-    }
-    int w;
-    cin>>w;
+    
+    
     for(int i =1;i<=n;i++)
     {
         for(int j=0;j<=w;j++)
@@ -45,7 +45,15 @@
             dp[i][j] = -1;
         }
     }
-    cout<<knapsack(n,weight,value,w);
     
+    cout<<knapsack(n,weight,value,w)<<endl;
+    // for(int i =0;i<=n;i++)
+    // {
+    //     for(int j =0;j<=w;j++)
+    //     {
+    //         cout<<dp[i][j]<<" ";
+    //     }
+    //     cout<<endl;
+    // }
     return 0;
  }
