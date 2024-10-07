@@ -3,13 +3,13 @@ using namespace std;
 int dp[100][100];
 bool sum_set_sum(int n, int ar[], int sum)
 {
-    if (n == 0 && sum == 0)
+    if ( sum == 0)
     {
-        return dp[n][sum]= true;
+        return  true;
     }
     if (n == 0)
     {
-        return dp[n][sum]=false;
+        return false;
     }
     if(dp[n][sum]!=-1)
     {
@@ -19,13 +19,11 @@ bool sum_set_sum(int n, int ar[], int sum)
     if (ar[n - 1] <= sum)
     {
         op1 = sum_set_sum(n - 1, ar, sum - ar[n - 1]);
-        op2 = sum_set_sum(n - 1, ar, sum);
+       
     }
-    else
-
-    {
+    
         op2 = sum_set_sum(n - 1, ar, sum);
-    }
+    
 
     return dp[n][sum] =  op1 || op2;
 }
