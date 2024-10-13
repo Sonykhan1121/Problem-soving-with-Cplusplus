@@ -1,0 +1,1 @@
+{"name":"Local: lcs","url":"e:\\c++ programming\\lcs.cpp","tests":[{"id":1728814786317,"input":"abcdfgr\nacfdgr\n","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++ programming\\lcs.cpp","group":"local","local":true}
